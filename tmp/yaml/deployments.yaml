@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ife-dep
+  labels:
+    app: ife
+spec: #Describes the desired state of the Deployment
+  replicas: 2
+  selector: # defines how Kubernetes knows which Pods are managed by this
+    matchLabels:
+      app: ife
+  template: #Defines the Pod template that is used to create the Pods managed by this Deployment
+    metadata:
+      labels:
+        app: ife
+    spec: #Describes the configuration of the Pod that will be created by this template.
+      containers:
+      - name: container1
+        image: xownsolutions/xownsolutions.com
+        ports:
+          - containerPort: 8080
+        resources:
+         requests:
+          memory: "15Mi"
+          cpu: "100m"
+         limits:
+          memory: "20Mi"
+          cpu: "100m"
+     
+  

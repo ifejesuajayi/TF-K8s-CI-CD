@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-nginx-t1q1
+  labels:
+    app: nginx_app_t1q1
+
+spec:
+  containers:
+    - name: nginx-container-t1q1
+      image: nginx:latest
+
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ecommerce-nginx-t1q2
+
+spec:
+  containers:
+    - name: ecommerce-nginx-t1q2
+      image: nginx
+
+
+---
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-replicationcontroller-t3q5
+  labels:
+    app: nginx-replicationcontroller-t3q5
+spec:
+  selector:
+    app: nginx-replicationcontroller-t3q5
+  template:
+    metadata:
+      labels:
+          app: nginx-replicationcontroller-t3q5
+    spec:
+      containers:
+        - name: nginx-replicationcontroller-t3q5
+          image: nginx:latest

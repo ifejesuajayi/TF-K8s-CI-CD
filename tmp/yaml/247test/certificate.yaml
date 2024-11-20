@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: cert
+  namespace: default
+spec:
+  secretName: cert-secret
+  dnsNames:
+  - k8s.ng.247travels.com
+  - k8s.vt.247travels.com
+  - k8s.247travels.com
+  issuerRef:
+    name: letsencrypt-prod # Match the name of your ClusterIssuer
+    kind: ClusterIssuer
+  privateKey:
+    algorithm: RSA
+    size: 2048
